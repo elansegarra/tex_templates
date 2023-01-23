@@ -1,62 +1,19 @@
 \documentclass[]{beamer}
 \usepackage{amsmath, amssymb}
 \usepackage{graphicx}
-\usepackage{multirow}
 \usepackage{colortbl}
 \usepackage{arydshln}
-\usepackage{tikz} 
 \usepackage{color}
-\usepackage{textpos} 
-\usepackage{booktabs}   			% For nicer tables
-\usepackage[comma]{natbib} 	
-\usepackage{bbm}					% Allows proper indicator functions: \mathbbm{1}
-%\usepackage{multirow}
-%\usepackage{dcolumn}
-%\usepackage{babel}
-\setbeamertemplate{navigation symbols}{}
 
-%%%%%%%%% Packages and definitions for theorems
-\usepackage{amsthm}
-\theoremstyle{plain}
-\newtheorem*{theorem*}{\protect\theoremname}
-%\newtheorem{assumption}[theorem]{\protect\assumptionname}
-\providecommand{\theoremname}{Theorem}
-
-%%%%%%%%% For making pretty boxed propositions/theorems/assumptions etc
-\usepackage[framemethod=TikZ]{mdframed}
-% Increase the counter by one and make it available to ref
-\newcounter{theo}[section]\setcounter{theo}{0}
-%\renewcommand{\thetheo}{\arabic{section}.\arabic{theo}} % If we want section in thm number
-\renewcommand{\thetheo}{\arabic{theo}} % If we don't want section in thm number
-\newenvironment{boxedprop}[2][]{%
-\refstepcounter{theo}%
-\ifstrempty{#1}% % Checking if the title is empty
-{\mdfsetup{% % This is what happens if the title is empty
-		frametitle={%
-			\tikz[baseline=(current bounding box.east),outer sep=0pt]
-			\node[anchor=east,rectangle,fill=blue!20]
-			{\strut Theorem};}}
-			%{\strut Proposition~\thetheo};}} % Use this line if you want numbering
-}%
-{\mdfsetup{% % This is what happens if the title is not empty
-		frametitle={%
-			\tikz[baseline=(current bounding box.east),outer sep=0pt]
-			\node[anchor=east,rectangle,fill=blue!20]
-			{\strut Theorem:~#1};}}%
-			%{\strut Proposition~\thetheo:~#1};}}% Use this line if you want numbering
-}%
-\mdfsetup{innertopmargin=-5pt,linecolor=blue!20,%
-	linewidth=1pt,topline=true,%
-	frametitleaboveskip=\dimexpr-\ht\strutbox\relax
-}
-\begin{mdframed}[]\relax%
-\label{#2}}{\end{mdframed}}
+\usepackage[comma]{natbib} 		% For author-year citations
+\usepackage{tikz} 				% Used for backgrounds (and also for diagrams)
+\setbeamertemplate{navigation symbols}{} % Supresses navigation symbols that would appear at bottom
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Commands for Light vs Dark Backgrounds
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Call the command right before the slide (outside of the frame envinronemt). Will
-%    persist until the other command is called.
+% Call the command right before the slide (outside of the frame envinronmet). The
+%    chosen background will persist until the other command is called.
 
 \newcommand{\UseLightBackground}{
 	\usebackgroundtemplate{
@@ -99,8 +56,10 @@
 	\end{frame}
 }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% BLS template style changes
-\definecolor{mygray}{gray}{0.30} % Defining my gray color for footnotes
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Defining BLS Colors and Slide Number Footnotes
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{mygray}{gray}{0.30} % Defining gray color for footnotes
 \definecolor{navyblue}{rgb}{0.0, 0.0, 0.5}
 \defbeamertemplate{footline}{left page number}
 {%

@@ -1,0 +1,65 @@
+\documentclass[]{beamer}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Misc Useful Settings and packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{tikz} 				% For creating network graphs (among other things)
+%\usepackage{booktabs}   		% For nicer tables
+%\usepackage{multirow}			% For creating table cells that span multiple rows
+%\usepackage{bbm}					% Allows proper indicator functions: \mathbbm{1}
+%\setbeamertemplate{navigation symbols}{} % Supresses navigation symbols
+\usepackage{textpos} 			% ?Boxes?
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% A: Packages for Theorems
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsthm}
+\theoremstyle{plain}
+\newtheorem*{theorem*}{\protect\theoremname}
+%\newtheorem{assumption}[theorem]{\protect\assumptionname}
+\providecommand{\theoremname}{Theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% B: Pretty Boxes Around Propositions/Theorems/Assumptions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[framemethod=TikZ]{mdframed}
+% Increase the counter by one and make it available to ref
+\newcounter{theo}[section]\setcounter{theo}{0}
+%\renewcommand{\thetheo}{\arabic{section}.\arabic{theo}} % If we want section in thm number
+\renewcommand{\thetheo}{\arabic{theo}} % If we don't want section in thm number
+\newenvironment{boxedprop}[2][]{%
+	\refstepcounter{theo}%
+	\ifstrempty{#1}% % Checking if the title is empty
+	{\mdfsetup{% % This is what happens if the title is empty
+			frametitle={%
+				\tikz[baseline=(current bounding box.east),outer sep=0pt]
+				\node[anchor=east,rectangle,fill=blue!20]
+				{\strut Theorem};}}
+		%{\strut Proposition~\thetheo};}} % Use this line if you want numbering
+	}%
+	{\mdfsetup{% % This is what happens if the title is not empty
+			frametitle={%
+				\tikz[baseline=(current bounding box.east),outer sep=0pt]
+				\node[anchor=east,rectangle,fill=blue!20]
+				{\strut Theorem:~#1};}}%
+		%{\strut Proposition~\thetheo:~#1};}}% Use this line if you want numbering
+	}%
+	\mdfsetup{innertopmargin=-5pt,linecolor=blue!20,%
+		linewidth=1pt,topline=true,%
+		frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+	}
+	\begin{mdframed}[]\relax%
+		\label{#2}
+}{\end{mdframed}}
+
+\begin{document}
+	
+\begin{frame}{B: Pretty Boxed Theorems}
+	Below is an example of a boxed theorem environment.
+	
+	\begin{theorem}[additional text]
+		Let $A$ and $B$ be $ n\times n $ matrices of real numbers. If $ A $ and $ B $ are both invertible, then the matrix $ AB $ is invertible.
+	\end{theorem}
+\end{frame}
+	
+\end{document}
