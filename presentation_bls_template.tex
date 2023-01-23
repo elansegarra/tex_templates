@@ -1,0 +1,238 @@
+\documentclass[]{beamer}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{colortbl}
+\usepackage{arydshln}
+\usepackage{tikz} 
+\usepackage{color}
+\usepackage{textpos} 
+\usepackage{booktabs}   			% For nicer tables
+\usepackage[comma]{natbib} 	
+\usepackage{bbm}					% Allows proper indicator functions: \mathbbm{1}
+%\usepackage{multirow}
+%\usepackage{dcolumn}
+%\usepackage{babel}
+\setbeamertemplate{navigation symbols}{}
+
+%%%%%%%%% Packages and definitions for theorems
+\usepackage{amsthm}
+\theoremstyle{plain}
+\newtheorem*{theorem*}{\protect\theoremname}
+%\newtheorem{assumption}[theorem]{\protect\assumptionname}
+\providecommand{\theoremname}{Theorem}
+
+%%%%%%%%% For making pretty boxed propositions/theorems/assumptions etc
+\usepackage[framemethod=TikZ]{mdframed}
+% Increase the counter by one and make it available to ref
+\newcounter{theo}[section]\setcounter{theo}{0}
+%\renewcommand{\thetheo}{\arabic{section}.\arabic{theo}} % If we want section in thm number
+\renewcommand{\thetheo}{\arabic{theo}} % If we don't want section in thm number
+\newenvironment{boxedprop}[2][]{%
+\refstepcounter{theo}%
+\ifstrempty{#1}% % Checking if the title is empty
+{\mdfsetup{% % This is what happens if the title is empty
+		frametitle={%
+			\tikz[baseline=(current bounding box.east),outer sep=0pt]
+			\node[anchor=east,rectangle,fill=blue!20]
+			{\strut Theorem};}}
+			%{\strut Proposition~\thetheo};}} % Use this line if you want numbering
+}%
+{\mdfsetup{% % This is what happens if the title is not empty
+		frametitle={%
+			\tikz[baseline=(current bounding box.east),outer sep=0pt]
+			\node[anchor=east,rectangle,fill=blue!20]
+			{\strut Theorem:~#1};}}%
+			%{\strut Proposition~\thetheo:~#1};}}% Use this line if you want numbering
+}%
+\mdfsetup{innertopmargin=-5pt,linecolor=blue!20,%
+	linewidth=1pt,topline=true,%
+	frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+}
+\begin{mdframed}[]\relax%
+\label{#2}}{\end{mdframed}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Commands for Light vs Dark Backgrounds
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Call the command right before the slide (outside of the frame envinronemt). Will
+%    persist until the other command is called.
+
+\newcommand{\UseLightBackground}{
+	\usebackgroundtemplate{
+		\tikz[overlay,remember picture] \node[opacity=1.6, at=(current page.center)] 
+		{ \includegraphics[height=\paperheight,width=\paperwidth]{img/Background2.png} };
+	}
+}
+\newcommand{\UseDarkBackground}{
+	\usebackgroundtemplate{
+		\tikz[overlay,remember picture] \node[opacity=1.6, at=(current page.center)] 
+		{ \includegraphics[height=\paperheight,width=\paperwidth]{img/Background.png} };
+	}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Creates Section Signposts
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Can disable for a section using "\NextSectionWithoutTitlePage"
+
+\newif\ifSectionTitlePage
+\newcommand\NextSectionWithoutTitlePage{\SectionTitlePagefalse}
+\SectionTitlePagetrue
+\AtBeginSection[]
+{
+	\ifSectionTitlePage
+%	\UseLightBackground  % Use the BLS background
+%	\setbeamertemplate{footline}[reg page number]
+	\begin{frame}
+		\frametitle{Presentation Outline}
+		\tableofcontents[currentsection]
+	\end{frame}
+	\fi
+	\SectionTitlePagetrue % Turns section pages on for subsequent
+}
+\AtBeginSubsection[]
+{
+	\begin{frame}
+		\frametitle{Table of Contents}
+		\tableofcontents[currentsection,currentsubsection]
+	\end{frame}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% BLS template style changes
+\definecolor{mygray}{gray}{0.30} % Defining my gray color for footnotes
+\definecolor{navyblue}{rgb}{0.0, 0.0, 0.5}
+\defbeamertemplate{footline}{left page number}
+{%
+  \hfill%
+  \usebeamercolor[white]{page number in head/foot}%
+  \usebeamerfont{page number in head/foot}%
+  \insertframenumber\,/\,\inserttotalframenumber\kern53.5em\vskip10pt%
+}
+\setbeamertemplate{footline}[left page number]
+\defbeamertemplate{footline}{reg page number}
+{%
+  \hfill%
+  \usebeamercolor[navyblue]{page number in head/foot}%
+  \usebeamerfont{page number in head/foot}%
+  \insertframenumber\,/\,\inserttotalframenumber\kern53.5em\vskip10pt%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Main Presentation Slides 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\title{\textbf{\textcolor{white}{****** ADD TITLE HERE ******}}}
+\author{\textbf{\textcolor{white}{** AUTHOR HERE **}}}
+\institute{\normalsize{\textcolor{white}{U.S. Bureau of Labor Statistics \\ Office of Compensation and Working Conditions}}}
+\date{\textcolor{white}{** PRESENTATION VENUE **\\ \vspace{.05cm} ** PRESENTATION DATE **}}
+
+\UseDarkBackground
+\begin{frame}[t]\textcolor{white}{
+  \titlepage
+}\end{frame}
+
+\UseLightBackground
+\setbeamertemplate{footline}[reg page number]
+\begin{frame}{Disclaimer}
+	\begin{center}
+		The views expressed herein are those of the author(s) and do not necessarily reflect those of the Federal Government, Department of Labor, or the Bureau of Labor Statistics. 
+		All results have been reviewed to ensure that no confidential information is disclosed.
+	\end{center}
+\end{frame}
+
+\section{Introduction}
+
+\begin{frame}
+	Introduce, motivate, get the audience on board with what you're going to show them.
+\end{frame}
+
+\begin{frame}{Research Question}
+	So what is the actual question/goal that you are talking about?
+\end{frame}
+
+\begin{frame}{Preview of Results}
+	Give them a preview of what's to come in case they tune out for the rest of the presentation.
+\end{frame}
+
+\begin{frame}{Literature and Contribution}
+	Maybe you need to talk about the literature? Give some context? Or maybe not, do whatever you want, I'm not your mother.
+\end{frame}
+
+\section{Model}
+
+\begin{frame}{Model that Models All Models}
+	Talk about the model with a bit of math, bit of description, bit of hand waving.
+\end{frame}
+
+\NextSectionWithoutTitlePage % Don't show the main section title page (just show the subsection one)
+\section{Identification, Estimation, and Inference}
+
+\subsection{Situation 1}
+
+\begin{frame}{Situation 1}
+	Mention some things that are specific to situation 1.
+\end{frame}
+
+\subsection{Situation 2}
+
+\begin{frame}[label=situation2]{Situation 2}
+	Surprise, things are different in situation 2! Who would have thought.
+	
+	Click \hyperlink{extra_details}{\beamerbutton{this button}} for more details in an appendix slide.
+\end{frame}
+
+\section{Monte Carlo Simulations}
+
+\begin{frame}{Monte Carlo Simulations}
+	Some pretty pictures and tables showing that, oh my god, the proposed methods actually work in a super idealized environment.
+\end{frame}
+
+\section{Application}
+
+\begin{frame}{Application: Something in the Real World}
+	This is what happens when we use the methods on a real world scenario.
+\end{frame}
+
+\begin{frame}{Conclusion}
+	Here we conclude, summarize the project, etc...
+\end{frame}
+
+%}
+
+\UseDarkBackground
+\setbeamertemplate{footline}[left page number]
+
+\begin{frame}\frametitle{\textcolor{white}{CONTACT INFORMATION}}
+	\begin{center}
+		\textcolor{white}{\huge{Thank You!}}
+		\bigskip
+		
+		\textcolor{white}{\huge\textbf{Elan Segarra}}
+		
+		\textcolor{white}{\large U.S. Bureau of Labor Statistics \\ Office of Compensation and Working Conditions \\ Segarra.Elan@bls.gov}
+	\end{center}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% APPENDIX 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\appendix
+\begin{frame}[allowframebreaks, noframenumbering]{Bibliography}
+	\bibliographystyle{apa}
+	\textcolor{white}{\bibliography{bib_file_name}}  % The bib file(s)
+\end{frame}
+
+\UseLightBackground
+\setbeamertemplate{footline}[left page number]
+
+\begin{frame}[label=extra_details]{Something Extra}
+	Something a little extra here, just in case more details are required (or more time needs to be killed)
+	
+	Back to \hyperlink{situation2}{\beamerbutton{main slide}}.
+\end{frame}
+
+\end{document}
