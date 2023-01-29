@@ -1,0 +1,122 @@
+\documentclass[]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% A: Layout and Structure
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{geometry}						% For defining the margins
+\geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+
+%\renewcommand{\baselinestretch}{1.5}  		% Line spacing, use 1.5 to get 
+%\linespread{1.5}							% Line spacing, exact same effect as above
+
+%\usepackage{enumitem}   					% For custom enumeration envs
+%\usepackage{array}							% Normally uneeded for array env, but this gets u the fancy array options
+\usepackage{textpos} 						% ?Boxes?
+\usepackage{lipsum}  						% For generating dummy text
+%\usepackage{xcolor}						% For defining custom colors
+%\definecolor{coolblack}{rgb}{0.0, 0.18, 0.39}
+%\usepackage[colorlinks=true,linkcolor=blue,urlcolor=black,citecolor=coolblack]{hyperref}   % Makes references into hyperlinks
+
+%\usepackage[symbol]{footmisc} 				% Replace footnote numbers with symbols
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% B: Math and Theorems
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{bbm}							% Allows proper indicator functions: \mathbbm{1}
+
+%\usepackage{amsmath, amsthm, amssymb, amsfonts} % These pacakges doa bunch of different things
+%	% for math environments. Check out: https://tex.stackexchange.com/questions/32100/what-does-each-ams-package-do
+%\theoremstyle{plain}
+%\newtheorem*{theorem*}{\protect\theoremname}
+%%\newtheorem{assumption}[theorem]{\protect\assumptionname}
+%\providecommand{\theoremname}{Theorem}
+
+%\usepackage{amssymb}                       % Includes \blacksquare among other math symbols
+%\renewcommand{\qedsymbol}{$\blacksquare$}  % Changes the proof QED box to be a black square
+
+% Pretty Boxes Around Propositions/Theorems/Assumptions
+\usepackage[framemethod=TikZ]{mdframed}
+% Increase the counter by one and make it available to ref
+\newcounter{theo}[section]\setcounter{theo}{0}
+%\renewcommand{\thetheo}{\arabic{section}.\arabic{theo}} % If we want section in thm number
+\renewcommand{\thetheo}{\arabic{theo}} % If we don't want section in thm number
+\newenvironment{boxedprop}[2][]{%
+	\refstepcounter{theo}%
+	\ifstrempty{#1}% % Checking if the title is empty
+	{\mdfsetup{% % This is what happens if the title is empty
+			frametitle={%
+				\tikz[baseline=(current bounding box.east),outer sep=0pt]
+				\node[anchor=east,rectangle,fill=blue!20]
+				{\strut Theorem};}}
+		%{\strut Proposition~\thetheo};}} % Use this line if you want numbering
+	}%
+	{\mdfsetup{% % This is what happens if the title is not empty
+			frametitle={%
+				\tikz[baseline=(current bounding box.east),outer sep=0pt]
+				\node[anchor=east,rectangle,fill=blue!20]
+				{\strut Theorem:~#1};}}%
+		%{\strut Proposition~\thetheo:~#1};}}% Use this line if you want numbering
+	}%
+	\mdfsetup{innertopmargin=-5pt,linecolor=blue!20,%
+		linewidth=1pt,topline=true,%
+		frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+	}
+	\begin{mdframed}[]\relax%
+		\label{#2}
+}{\end{mdframed}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% C: DAGs and Network Diagrams
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{tikz} 							% For creating DAG/network graphs (and lots else)
+\usetikzlibrary{decorations.pathreplacing}  % For replacing paths with decorators (like braces)
+\usetikzlibrary{math}   					% for doing math inside tikz envs
+\usetikzlibrary{matrix}						% For drawing matrices in tikz
+\usetikzlibrary{calc,fit} 					% For setting cell node sizes in tikz matrices (I think)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% D: Figures and Plotting
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{caption}    					% for subfigures
+%\usepackage{subcaption} 					% for subfigures
+%\usepackage{graphicx}   					% Package for importing EPS files.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% E: Tables
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{booktabs}						% Better table typesetting (includes use of \toprule, \midrule, \bottomrule)
+%\usepackage{multirow}						% For creating table cells that span multiple rows
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% E: Miscellaneous
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\section*{A: Layout and Structure}
+	
+	\subsection{lipsum}
+	Dummy text can be inserted using the lipsum package. 
+	This pacakge is not dynamic rather it simply includes a whole bunch of predetermined text.
+	For example the command "\\lipsum[2-3]"" will add paragraphs 2 through 4:
+	
+	\lipsum[2-4]
+	
+\section*{B: Math and Theorems}
+
+
+\section*{C: DAGs and Network Diagrams}
+
+
+\section*{D: Figures and Plotting}
+
+
+\section*{E: Figures and Plotting}
+
+
+\section*{F: Miscellaneous}
+	
+\end{document}

@@ -1,27 +1,30 @@
 \documentclass[]{beamer}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Misc Useful Settings and packages
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\usepackage{tikz} 				% For creating network graphs (among other things)
-%\usepackage{booktabs}   		% For nicer tables
-%\usepackage{multirow}			% For creating table cells that span multiple rows
-%\usepackage{bbm}					% Allows proper indicator functions: \mathbbm{1}
-%\setbeamertemplate{navigation symbols}{} % Supresses navigation symbols
-\usepackage{textpos} 			% ?Boxes?
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{tikz} 							% For creating network graphs (among other things)
+%\usepackage{booktabs}   					% For nicer tables
+%\usepackage{multirow}						% For creating table cells that span multiple rows
+%\usepackage{bbm}							% Allows proper indicator functions: \mathbbm{1}
+%\setbeamertemplate{navigation symbols}{} 	% Supresses navigation symbols
+\usepackage{textpos} 						% ?Boxes?
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % A: Packages for Theorems
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{amsthm}
 \theoremstyle{plain}
 \newtheorem*{theorem*}{\protect\theoremname}
 %\newtheorem{assumption}[theorem]{\protect\assumptionname}
 \providecommand{\theoremname}{Theorem}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{amssymb}                       % Includes \blacksquare
+%\renewcommand{\qedsymbol}{$\blacksquare$}  % Changes the proof QED box to be a black square
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % B: Pretty Boxes Around Propositions/Theorems/Assumptions
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage[framemethod=TikZ]{mdframed}
 % Increase the counter by one and make it available to ref
 \newcounter{theo}[section]\setcounter{theo}{0}

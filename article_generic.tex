@@ -1,47 +1,41 @@
 \documentclass[11pt, letterpaper]{article}
 
-\usepackage{geometry}	% For defining the margins
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Document Layout Packages/Definitions
+
+\usepackage{geometry}						% For defining the margins
 \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
-%\renewcommand{\baselinestretch}{1.5}  % For line spacing
-\linespread{1.2}
-\usepackage{amsmath}    					% Package for AMS math extensions.
-\usepackage{graphicx}   					% Package for importing EPS files.
-\usepackage[comma]{natbib} 					% For bibliography style
-% The following are packages added for our specific document
-\usepackage{amsthm}     					% for numbered theorems
-\usepackage{amsfonts}   					% for mathbb
-\usepackage{caption}    					% for subfigures
-\usepackage{subcaption} 					% for subfigures
-\usepackage{enumitem}   					% for custom enumeration envs
-\usepackage{bbm}							% Allows proper indicator functions: \mathbbm{1}
-% \usepackage[symbol]{footmisc} 			% for dagger footnotes (for author affiliations)
-\usepackage{booktabs}						% Better table typesetting (includes use of \toprule, \midrule, \bottomrule)
-\usepackage{array}							% Normally uneeded for array env, but this gets u the fancy array options
-%\usepackage{amssymb}                       % Includes \blacksquare
-%\renewcommand{\qedsymbol}{$\blacksquare$}  % Changes the proof QED box to be a black square
+\linespread{1.2}							% Line spacing
 
-% Tikz Specific commands
-\usepackage{tikz}       					% for DAG figures
-\usetikzlibrary{decorations.pathreplacing}  % For replacing paths with decorators (like braces)
-\usetikzlibrary{math}   					% for doing math inside tikz envs
-\usetikzlibrary{matrix}						% For drawing matrices in tikz
-\usetikzlibrary{calc,fit} 					% For setting cell node sizes in tikz matrices (I think)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Math Packages/Definitions
 
 
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Misc Other Packages/Definitions
+
+\usepackage{xcolor}							% For defining custom colors
 \definecolor{coolblack}{rgb}{0.0, 0.18, 0.39}
 \usepackage[colorlinks=true,linkcolor=blue,urlcolor=black,citecolor=coolblack]{hyperref}   % Makes references into hyperlinks
-%\usepackage{bookmark}
+\usepackage[comma]{natbib} 					% For bibliography style
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Loading other files (eg notation files, custom environments, etc)
+%\input{notation.tex}
+%\input{environments.tex}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
-	
-%\lhead{Segarra}
-%\chead{Birth, Death, and Record Linkage: Theoretical Results}
-%\rhead{2020}
+
 \begin{titlepage}
 
 \title{****** ADD TITLE HERE ******}
-\author{Elan Segarra\footnote{Research Economist in the U.S. Bureau of Labor Statistics. Email: segarra.elan@bls.gov}}
+\author{Elan Segarra\footnote{Research Economist in the U.S. Bureau of Labor Statistics. Email: segarra.elan@bls.gov}\\ Author Two\footnote{Their affiliation}}
 \date{March 20th, 2022}
 \maketitle
 
@@ -59,7 +53,7 @@
 \noindent\small{\textbf{JEL Codes: *** JEL CODES HERE ***}}\\
 \small{\textbf{Keywords: *** KEYWORDS HERE (COMMA SEPARATED) *** }}
 
-\footnotetext{*** ACKNOWLEDGEMENTS HERE ***}
+\thanks{*** ACKNOWLEDGMENTS HERE ***}
 
 \end{titlepage}
 
@@ -76,7 +70,9 @@ Describe the model..
 There are probably some Monte Carlo simulations to discuss...
 
 \section{Empirical Application}\label{sec:application}
-Also a real world application...
+Also a real world application... \footnote{SOmething something}
+
+But maybe some else here \footnote{booo}
 
 \section{Conclusion}\label{sec:conclusion}
 Summarize again and conclude...
