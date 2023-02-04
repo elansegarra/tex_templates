@@ -19,17 +19,33 @@
 
 %\usepackage[symbol]{footmisc} 				% Replace footnote numbers with symbols
 
+% Defining comment commands that I can toggle on and off
+\newcommand{\mycomment}[1]{}  								%comment not shown
+%\newcommand{\mycomment}[1]{{\bfseries \color{orange} #1}} 	%comment shown
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % B: Math and Theorems
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\usepackage{bbm}							% Allows proper indicator functions: \mathbbm{1}
 
-%\usepackage{amsmath, amsthm, amssymb, amsfonts} % These pacakges doa bunch of different things
+\usepackage{amsmath, amsthm, amssymb, amsfonts} % These pacakges doa bunch of different things
 %	% for math environments. Check out: https://tex.stackexchange.com/questions/32100/what-does-each-ams-package-do
-%\theoremstyle{plain}
-%\newtheorem*{theorem*}{\protect\theoremname}
-%%\newtheorem{assumption}[theorem]{\protect\assumptionname}
-%\providecommand{\theoremname}{Theorem}
+% Here we define some plain style environments (italicized body and bold title)
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{assumption}{Assumption}
+\renewcommand\theassumption{A\arabic{assumption}}		% Rename assumption numbering as A1, A2, etc	
+\AfterEndEnvironment{assumption}{\noindent\ignorespaces}  % Prevent tab online after this environment
+\newtheorem{corollary}{Corollary}
+\newtheorem{proposition}{Proposition}
+% Here we define some remark style environments (roman body and italic title)
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+% Here we define some definition style environments (roman body and bold title)
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
 
 %\usepackage{amssymb}                       % Includes \blacksquare among other math symbols
 %\renewcommand{\qedsymbol}{$\blacksquare$}  % Changes the proof QED box to be a black square
@@ -98,16 +114,43 @@
 
 \section*{A: Layout and Structure}
 	
-	\subsection{lipsum}
+	\subsection*{lipsum}
 	Dummy text can be inserted using the lipsum package. 
 	This pacakge is not dynamic rather it simply includes a whole bunch of predetermined text.
-	For example the command "\\lipsum[2-3]"" will add paragraphs 2 through 4:
+	For example the command \verb|\\lipsum[2-3]| will add paragraphs 2 through 3:
 	
-	\lipsum[2-4]
+	\lipsum[2-3]
 	
 \section*{B: Math and Theorems}
+	
+	\subsection*{Theorem Environments}
+	Examples of the plain style theorem environments where the titles are bold and the body text is printed in italics:
+	\begin{assumption}
+		The $ n\times n $ matrix $ X $ is invertible.
+	\end{assumption}
+	\begin{assumption}
+		The $ n\times n $ matrix $ Y $ is invertible.
+	\end{assumption}
+	\begin{lemma}
+		If A1 holds, then you get this somewhat obvious result which is helpful for future theorems.
+	\end{lemma}
+	\begin{theorem}[Amazing Result]
+		If A1 and A2 hold, then something amazing follows.
+	\end{theorem}
 
+	\noindent Examples of the remark style environments where the titles are italic and the body text is regular roman:
+	\begin{remark}
+		This is just an aside that is minor, but worth mentioning.
+	\end{remark}
 
+	\noindent Finally we have examples of the definition style environments where the titles are bold and the body text is regular roman:
+	\begin{definition}
+		Here we define the variable $ p_i(z) $.
+	\end{definition}
+	\begin{example}
+		A very specific example of the above definition, or of a model that was defined earlier could be described here.
+		This can make definitions much more concrete and easier to understand.
+	\end{example}
 \section*{C: DAGs and Network Diagrams}
 
 
