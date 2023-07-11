@@ -58,6 +58,23 @@
 		\label{#2}
 }{\end{mdframed}}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% C: Tikz Elements
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{tikz}
+% This lets you define points relative to slides (see slide C1)
+\tikzset{
+	use page relative coordinates/.style={
+		shift={(current page.south west)},
+		x={(current page.south east)},
+		y={(current page.north west)}
+	},
+}
+
+% This lets you add "visible on" property to tikz elements (see slide C2)
+\usetikzlibrary{overlay-beamer-styles}
+
+
 \begin{document}
 	
 \begin{frame}{B: Pretty Boxed Theorems}
@@ -66,6 +83,44 @@
 	\begin{theorem}[additional text]
 		Let $A$ and $B$ be $ n\times n $ matrices of real numbers. If $ A $ and $ B $ are both invertible, then the matrix $ AB $ is invertible.
 	\end{theorem}
+\end{frame}
+
+\begin{frame}{C1: Tikz Elements (Add Overlayed Arrows!)}
+	Below is an example of using tikz to create arrows for pointing at things on the frame.
+	
+	\vspace{0.65\paperheight} % Creating space between above and below text.
+	
+	Keep in mind this method ignores whatever is on the slide, so you may need to add invisible space so that text accommodates.
+	
+	\begin{tikzpicture}[remember picture,overlay,use page relative coordinates]
+		% Coords are relative to SW corner so (X,Y) is X% from left side and Y% up from bottom
+		\node (a) at (0.1,0.2) {Who?};
+		\node (b) at (0.5,0.8) {What?};
+		\node (c) at (0.8,0.5) {Where?};
+		\node (x) at (0.5,0.5) {Something!};
+		\draw[-stealth] (a) -- (x);
+		\draw[-stealth] (b) -- (x);
+		\draw[-stealth] (c) -- (x);
+	\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{C2: Tikz Elements (Make Elements Appear Over Time!)}
+	Below is an example of making the tikz elements appear over time as you click through.
+	
+	\vspace{0.65\paperheight} % Creating space between above and below text.
+	
+	Keep in mind this method ignores whatever is on the slide, so you may need to add invisible space so that text accommodates.
+	
+	\begin{tikzpicture}[remember picture,overlay,use page relative coordinates]
+		% Coords are relative to SW corner so (X,Y) is X% from left side and Y% up from bottom
+		\node (a) at (0.1,0.2) {Who?};
+		\node[visible on=<2->] (b) at (0.5,0.8) {What?};
+		\node[visible on=<3->] (c) at (0.8,0.5) {Where?};
+		\node (x) at (0.5,0.5) {Something!};
+		\draw[-stealth] (a) -- (x);
+		\draw[-stealth,visible on=<2->] (b) -- (x);
+		\draw[-stealth,visible on=<3->] (c) -- (x);
+	\end{tikzpicture}
 \end{frame}
 	
 \end{document}
